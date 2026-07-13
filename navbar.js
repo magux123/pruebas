@@ -1,39 +1,98 @@
-const openButton = document.getElementById('open-sidebar-button')
-const navbar = document.getElementById('navbar')
+const openButton = document.getElementById("open-sidebar-button");
+const navbar = document.getElementById("navbar");
 
-const media = window.matchMedia("(width < 700px)")
+const media = window.matchMedia("(width < 700px)");
 
-media.addEventListener('change', (e) => updateNavbar(e))
+let temporizador;
 
-function updateNavbar(e){
-    const isMobile = e.matches
-    console.log(isMobile)
-    if(isMobile){
-        navbar.setAttribute('inert', '')
+// ======================
+// Scroll para escritorio
+// ======================
+
+function navbarScroll() {
+
+    // Mientras no hayas bajado 100px, la barra siempre permanece visible
+    if (window.scrollY < 100) {
+        navbar.style.top = "0";
+        clearTimeout(temporizador);
+        return;
     }
-    else{
-        // desktop device
-        navbar.removeAttribute('inert')
+
+    // A partir de los 100px, mostrar la barra al hacer scroll
+    navbar.style.top = "0";
+
+    clearTimeout(temporizador);
+
+    // Ocultarla después de 3 segundos sin hacer scroll
+    temporizador = setTimeout(() => {
+        navbar.style.top = "-80px";
+    }, 2000);
+
+}
+
+// ======================
+// Detectar cambio de tamaño
+// ======================
+
+media.addEventListener("change", updateNavbar);
+
+function updateNavbar(e) {
+
+    const isMobile = e.matches;
+
+    if (isMobile) {
+
+        // Configuración para celular
+        navbar.setAttribute("inert", "");
+
+        // Desactivar el efecto de scroll
+        window.removeEventListener("scroll", navbarScroll);
+
+        // Mantener visible la barra
+        navbar.style.top = "0";
+
+    } else {
+
+        // Configuración para escritorio
+        navbar.removeAttribute("inert");
+
+        // Activar el efecto de scroll
+        window.addEventListener("scroll", navbarScroll);
+
     }
+
 }
 
-function openSidebar(){
-    navbar.classList.add('show')
-    openButton.setAttribute('aria-expanded','true')
-    navbar.removeAttribute('inert')
+// ======================
+// Abrir y cerrar menú
+// ======================
+
+function openSidebar() {
+    navbar.classList.add("show");
+    openButton.setAttribute("aria-expanded", "true");
+    navbar.removeAttribute("inert");
 }
 
-function closeSidebar(){
-    navbar.classList.remove('show')
-    openButton.setAttribute('aria-expanded','false')
-    navbar.setAttribute('inert', '')
+function closeSidebar() {
+    navbar.classList.remove("show");
+    openButton.setAttribute("aria-expanded", "false");
+    navbar.setAttribute("inert", "");
 }
 
-const navLinks = document.querySelector('nav a')
-navLinks.forEach(Link =>{
-    Link.addEventListener('click', () =>{
-        closeSidebar()
-    })
-})
+// ======================
+// Cerrar menú al hacer click
+// ======================
 
-updateNavbar(media)
+const navLinks = document.querySelectorAll("nav a");
+
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        closeSidebar();
+    });
+});
+
+// ======================
+// Inicializar
+// ======================
+
+updateNavbar(media);
