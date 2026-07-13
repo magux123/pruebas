@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="estilo.css">
     <link rel="icon" href="Logo.png" type="image/png">
     <script src="https://kit.fontawesome.com/6a48863bf7.js" crossorigin="anonymous"></script>
-    <script src="navbar.js" defer></script>
 </head>
 <body>
     <button id="open-sidebar-button" onclick="openSidebar()" aria-label="close sidebar" aria-expanded="false" aria-controls="navbar">
@@ -47,11 +46,51 @@
 
     <div id="overlay" onclick="closeSidebar()" area-hidden="true"></div>
 
-    <script src="barra.js"></script>
+    <script src="sonido.js"></script>
+    <script src="navbar.js" defer></script>
 
-    <main id="main-content">
-        <h1>Accesible Navbar</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dicta. Consectetur sapiente architecto minima labore nostrum, repellendus neque quo adipisci pariatur minus eaque. Rerum nesciunt soluta quod, magni quos iste?</p>
-    </main>
+    <section id="inicio">
+    </section>
+
+    <section id="presentacion">
+        <div class="texto">
+            <div class="encabezado">
+                <h2>Quién soy</h2>
+            </div>
+            <div class="informacion">
+                <p>Mi nombre es Ezequiel Caballero, tengo 33 años y soy Instructor Personal.</p>
+                <p>Me dedico al entrenamiento personalizado enfocado en VOS, no importa la edad que tengas.</p>
+                <p>Trabajo lo que es el cuidado del cuerpo y la adaptación de uno mismo.</p>
+                <p>Si estás acá es porque te interesa entrenar y que tengas un tiempo para usarlo al máximo.</p>
+                <p>Así que nada... ¡ARRANQUEMOS!</p>
+            </div>
+        </div>
+
+        <div class="video">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                <!-- Frente -->
+                    <div class="flip-card-front">
+                        <img src="presentacion.png" alt="Presentación">
+                    </div>
+                <!-- Dorso -->
+                <div class="flip-card-back">
+                    <video class="videoCard" muted playsinline controls>
+                        <source src="presentacion.mp4" type="video/mp4">
+                    </video>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="servicios" class="planes">
+
+    </section>
+
+    <section id="faq">
+        
+    </section>
 </body>
 </html>
