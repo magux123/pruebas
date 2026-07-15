@@ -15,6 +15,7 @@ html{
     font-family: 'Courier New', Courier, monospace;
     color: var(--text-color);
     scroll-behavior:smooth;
+    height: 100vh;
     scroll-snap-type:y mandatory;
 }
 
@@ -63,7 +64,7 @@ main p{
 }
 
 #botonVolumen:hover{
-    color:rgb(176, 122, 23);
+    color:rgb(255, 166, 0);
 }
 
 nav{
@@ -120,6 +121,7 @@ nav a.accent-link{
     padding: 1em;
     margin-left: auto;
     cursor: pointer;
+    
 }
 
 #close-sidebar-button{
@@ -139,22 +141,22 @@ nav a.accent-link{
 }
 
 @media (max-width: 700px){
+    
     body{
-        min-height: 100vh;
-        min-height: 100dvh;
+        height: auto;
         background-color: var(--primary-color);
     }
 
     section{
-        padding: min(5em,5%);
+        margin-top: 0%;
         scroll-snap-align:start;
         background-color: #111111;;
     }
 
     #botonVolumen{
-        color: rebeccapurple;
         display: flex;
     }
+
     #redes{
         color: #0071ff;
         display: flex;
@@ -166,6 +168,7 @@ nav a.accent-link{
     #open-sidebar-button, #close-sidebar-button{
         display: block;
     }
+    
 
     nav{
         position: fixed;
@@ -173,7 +176,7 @@ nav a.accent-link{
         right: -100%;
         height: 100vh;
         width: min(20em,100%);
-        z-index: 10;
+        z-index: 1000;
         border-left: 1px solid var(--hover-color);
         transition: right 300ms ease-in-out;
         
@@ -199,22 +202,15 @@ nav a.accent-link{
         padding-left: 1.5em;
     }
 
-    section{
-        padding: min(2em,5%);
-        height:100dvh;
-        scroll-snap-align:start;
-        background-color: #700000;;
-    }
-
     #inicio {
-        margin-top: 6.5em;
-        margin-bottom: 6.5em;
+        z-index: 0;
         background-image: url('AlegreFit.jpeg'); 
-        object-fit: contain;
+        object-fit: cover;
         /* EL CAMBIO CLAVE: Ajusta el segundo valor (eje Y) entre 30% y 80% 
         para mover la imagen verticalmente y centrar la cara del león */
         max-width: 100dvh;
-        height: 70dvh;
+        height: 100dvh;
+        aspect-ratio: 16 / 9;
     }
 
 }
