@@ -1,9 +1,7 @@
 const openButton = document.getElementById("open-sidebar-button");
 const navbar = document.getElementById("navbar");
 
-const media = window.matchMedia("(width < 700px)");
-
-let temporizador;
+const media = window.matchMedia("(max-width: 700px)");
 
 // ======================
 // Scroll para escritorio
@@ -11,23 +9,25 @@ let temporizador;
 
 function navbarScroll() {
 
-    // Mientras no hayas bajado 100px, la barra siempre permanece visible
-    if (window.scrollY < 100) {
+    const scrollActual = window.scrollY;
+
+    // Siempre visible cerca del inicio
+    if (scrollActual < 100) {
         navbar.style.top = "0";
-        clearTimeout(temporizador);
+        ultimoScroll = scrollActual;
         return;
     }
 
-    // A partir de los 100px, mostrar la barra al hacer scroll
-    navbar.style.top = "0";
-
-    clearTimeout(temporizador);
-
-    // Ocultarla después de 3 segundos sin hacer scroll
-    temporizador = setTimeout(() => {
+    // Bajando → ocultar
+    if (scrollActual > ultimoScroll) {
         navbar.style.top = "-80px";
-    }, 2000);
+    }
+    // Subiendo → mostrar
+    else {
+        navbar.style.top = "0";
+    }
 
+    ultimoScroll = scrollActual;
 }
 
 // ======================
@@ -42,9 +42,6 @@ function updateNavbar(e) {
 
     if (isMobile) {
 
-        // Configuración para celular
-        navbar.setAttribute("inert", "");
-
         // Desactivar el efecto de scroll
         window.removeEventListener("scroll", navbarScroll);
 
@@ -52,9 +49,6 @@ function updateNavbar(e) {
         navbar.style.top = "0";
 
     } else {
-
-        // Configuración para escritorio
-        navbar.removeAttribute("inert");
 
         // Activar el efecto de scroll
         window.addEventListener("scroll", navbarScroll);
@@ -70,13 +64,10 @@ function updateNavbar(e) {
 function openSidebar() {
     navbar.classList.add("show");
     openButton.setAttribute("aria-expanded", "true");
-    navbar.removeAttribute("inert");
 }
-
 function closeSidebar() {
     navbar.classList.remove("show");
     openButton.setAttribute("aria-expanded", "false");
-    navbar.setAttribute("inert", "");
 }
 
 // ======================

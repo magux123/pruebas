@@ -76,7 +76,7 @@ nav{
     opacity: 99%;
 
     position: fixed;
-    top: -80px;      /* Oculta la barra fuera de la pantalla */
+    top: 0px;      /* Oculta la barra fuera de la pantalla */
     right: 0;
     z-index: 1000;
     transition: top .4s ease;
