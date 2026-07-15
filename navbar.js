@@ -1,40 +1,140 @@
-const openButton = document.getElementById("open-sidebar-button");
+// =========================================
+// ELEMENTOS DEL DOM
+// =========================================
+
 const navbar = document.getElementById("navbar");
+const openButton = document.getElementById("open-sidebar-button");
 
 const media = window.matchMedia("(max-width: 700px)");
 
-// ======================
-// Scroll para escritorio
-// ======================
+let ultimoScroll = 0;
 
-function navbarScroll() {
+// =========================================
+// MOSTRAR / OCULTAR NAVBAR
+// =========================================
 
-    const scrollActual = window.scrollY;
+function mostrarNavbar() {
+    navbar.classList.remove("nav-hidden");
+}
 
-    // Siempre visible cerca del inicio
-    if (scrollActual < 100) {
-        navbar.style.top = "0";
-        ultimoScroll = scrollActual;
+function ocultarNavbar() {
+    navbar.classList.add("nav-hidden");
+}
+
+// =========================================
+// EFECTO DE SCROLL (ESCRITORIO)
+// =========================================
+
+// =========================================
+// NAVBAR CON OCULTADO AUTOMÁTICO
+// =========================================
+
+let temporizador;
+
+
+
+function mostrarNavbarPC(){
+
+    navbar.classList.remove("nav-hidden");
+
+
+    clearTimeout(temporizador);
+
+
+    // Si no estamos arriba, iniciar contador
+
+    if(window.scrollY > 0){
+
+        temporizador = setTimeout(()=>{
+
+            navbar.classList.add("nav-hidden");
+
+        },2000);
+
+    }
+
+}
+
+
+
+
+function navbarScroll(){
+
+    // En móvil no hacer nada
+
+    if(media.matches){
         return;
     }
 
-    // Bajando → ocultar
-    if (scrollActual > ultimoScroll) {
-        navbar.style.top = "-80px";
-    }
-    // Subiendo → mostrar
-    else {
-        navbar.style.top = "0";
+
+    // Si está arriba siempre visible
+
+    if(window.scrollY === 0){
+
+        clearTimeout(temporizador);
+
+        navbar.classList.remove("nav-hidden");
+
+        return;
+
     }
 
-    ultimoScroll = scrollActual;
+
+    // Si scrollea mostrar
+
+    mostrarNavbarPC();
+
 }
 
-// ======================
-// Detectar cambio de tamaño
-// ======================
 
-media.addEventListener("change", updateNavbar);
+
+
+window.addEventListener("scroll", navbarScroll);
+
+
+
+
+// Al cargar la página
+
+navbar.classList.remove("nav-hidden");
+
+
+
+// Cambio móvil/escritorio
+
+media.addEventListener("change",()=>{
+
+    if(media.matches){
+
+        clearTimeout(temporizador);
+
+        navbar.classList.remove("nav-hidden");
+
+    }
+
+});
+
+// =========================================
+// MENÚ LATERAL (MÓVIL)
+// =========================================
+
+function openSidebar() {
+
+    navbar.classList.add("show");
+    openButton.setAttribute("aria-expanded", "true");
+
+}
+
+function closeSidebar() {
+
+    navbar.classList.remove("show");
+    openButton.setAttribute("aria-expanded", "false");
+
+}
+
+// =========================================
+// CAMBIO ENTRE ESCRITORIO Y MÓVIL
+// =========================================
 
 function updateNavbar(e) {
 
@@ -42,48 +142,48 @@ function updateNavbar(e) {
 
     if (isMobile) {
 
-        // Desactivar el efecto de scroll
+        // En móvil no existe el efecto de ocultar al hacer scroll
         window.removeEventListener("scroll", navbarScroll);
 
-        // Mantener visible la barra
-        navbar.style.top = "0";
+        mostrarNavbar();
 
-    } else {
+    }
 
-        // Activar el efecto de scroll
+    else {
+
+        // En escritorio sí
         window.addEventListener("scroll", navbarScroll);
+
+        navbarScroll();
 
     }
 
 }
 
-// ======================
-// Abrir y cerrar menú
-// ======================
+// =========================================
+// EVENTOS
+// =========================================
 
-function openSidebar() {
-    navbar.classList.add("show");
-    openButton.setAttribute("aria-expanded", "true");
-}
-function closeSidebar() {
-    navbar.classList.remove("show");
-    openButton.setAttribute("aria-expanded", "false");
-}
+// Detectar cambio de tamaño de pantalla
+media.addEventListener("change", updateNavbar);
 
-// ======================
-// Cerrar menú al hacer click
-// ======================
-
+// Cerrar el menú al tocar un enlace (solo móvil)
 const navLinks = document.querySelectorAll("nav a");
 
 navLinks.forEach(link => {
+
     link.addEventListener("click", () => {
-        closeSidebar();
+
+        if (media.matches) {
+            closeSidebar();
+        }
+
     });
+
 });
 
-// ======================
-// Inicializar
-// ======================
+// =========================================
+// INICIALIZACIÓN
+// =========================================
 
 updateNavbar(media);

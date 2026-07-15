@@ -15,7 +15,6 @@ html{
     font-family: 'Courier New', Courier, monospace;
     color: var(--text-color);
     scroll-behavior:smooth;
-    height: 100vh;
     scroll-snap-type:y mandatory;
 }
 
@@ -26,8 +25,9 @@ body{
 }
 
 section{
-    padding: min(2em,5%);
-    height:100vh;
+    padding:clamp(1rem,3vw,3rem);
+    min-height:100vh;
+    height:auto;
     scroll-snap-align:start;
     background-color: #111111;;
 }
@@ -64,7 +64,7 @@ main p{
 }
 
 #botonVolumen:hover{
-    color:rgb(255, 166, 0);
+    color:rgb(176, 122, 23);
 }
 
 nav{
@@ -76,18 +76,25 @@ nav{
     opacity: 99%;
 
     position: fixed;
-    top: 0px;      /* Oculta la barra fuera de la pantalla */
+    top: 0;      /* Oculta la barra fuera de la pantalla */
     right: 0;
     z-index: 1000;
     transition: top .4s ease;
 }
 
+nav.nav-hidden{
+    top:-80px;
+}
+
 nav ul{
-    padding-left: 18em;
-    align-items: center;
-    height: 100%;
-    list-style: none;
-    display: flex;
+    height:100%;
+    list-style:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:clamp(1rem,3vw,4rem);
 }
 
 nav li{
@@ -98,7 +105,8 @@ nav a {
     display: flex;
     text-decoration: none;
     color: var(--text-color);
-    padding: 1em 2em;
+    padding:1rem;
+    font-size:clamp(.9rem,1.2vw,1.2rem);
     transition: background-color 150ms ease;
 }
 
@@ -121,7 +129,6 @@ nav a.accent-link{
     padding: 1em;
     margin-left: auto;
     cursor: pointer;
-    
 }
 
 #close-sidebar-button{
@@ -140,21 +147,359 @@ nav a.accent-link{
     display: none;
 }
 
-@media (max-width: 700px){
+/* ---------- PRESENTACIÓN ---------- */
+
+#presentacion{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:clamp(2rem,5vw,6rem);
+
+}
+
+
+.texto{
+
+    flex:1;
+
+}
+
+
+.video{
+
+    flex:1;
+
+}
+
+.encabezado h2{
+    color:#F5F3EE;
+    font-size:clamp(1.8rem, calc(7vh + 1rem), 5rem);
+    text-shadow:12px -5px 4px #e6d2b37d;
+
+}
+
+.informacion{
+    padding-left: 5%;
+    width: 100%;
+    color:#E6D2B3;
+    font-size:clamp(1rem,2vw,2rem);
+    line-height:1.6;
+
+}
+
+/* ---------- TARJETA ---------- */
+
+.flip-card{
+
+    width:min(100%,430px);
+    max-height:80vh;
+    aspect-ratio:9/16;
+    margin:auto;
+    perspective:1200px;
+
+}
+
+.flip-card-inner{
+
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform .8s;
+
+    transform-style:preserve-3d;
+
+}
+
+.flip-card:hover .flip-card-inner{
+    transform:rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back{
+
+    position:absolute;
+    inset:0;
+    border-radius:25px;
+    overflow:hidden;
+    backface-visibility:hidden;
+
+}
+
+/* ---------- VIDEO ---------- */
+
+.flip-card-back{
+    transform:rotateY(180deg);
+}
+
+/* ---------- IMAGEN Y VIDEO ---------- */
+
+.flip-card-front img,
+.flip-card-back video{
+
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+
+}
+
+/*-------------------------
+    TÍTULO
+-------------------------*/
+
+.encabezado{
+
+    margin-bottom:40px;
+
+}
+
+/*-------------------------
+    CONTENEDOR TARJETAS
+-------------------------*/
+
+.contenedor-cards{
+    display:flex;
+    border-radius: 20px;
+    gap: 10px;
+}
+
+h3 span{
+    display:block;
+    color:#ff9800;
+
+}
+
+.icono {
+    color: #ff9800;
+    font-size: 42px;
+    margin-bottom: 0px;
+}
+
+.etiqueta{
+
+    display:inline-block;
+    width:max-content;
+    background:#ff9800;
+    color:black;
+    font-weight:bold;
+    padding:5px 10px;
+    margin-bottom:0px;
+
+}
+
+/*-------------------------
+    TARJETAS
+-------------------------*/
+
+.card{
+    border-radius: 20px;
+    flex:1;
+    height:clamp(400px,65vh,700px);
+    position:relative;
+    overflow:hidden;
     
-    body{
-        height: auto;
-        background-color: var(--primary-color);
-    }
+}
 
-    section{
-        width: 100%;
-        margin-top: 0%;
-        scroll-snap-align:start;
-        background-color: #111111;;
-    }
 
-    #botonVolumen{
+.card img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+
+}
+
+.linea{
+    width:90px;
+    height:3px;
+    background:#ff9800;
+    margin-bottom:20px;
+
+}
+
+.contenido{
+    position:relative;
+    padding:10px 10px;
+    color:white;
+    height:100%;
+    font-size:clamp(1rem,2vw,2rem);
+}
+
+#tituloP{
+    margin-top: -50px;
+}
+
+.categoria{
+    margin-bottom:30px;
+}
+
+.categoria-btn,
+.pregunta-btn{
+
+    width:100%;
+    border:none;
+    cursor:pointer;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 25px;
+
+    background:#3a2d24;
+    color:#d7a45a;
+
+    border-radius:12px;
+
+    font-size:clamp(.9rem,1.5vw,1.3rem);
+
+}
+
+.pregunta-btn{
+
+    margin-top:15px;
+    margin-left:30px;
+    width:calc(100% - 30px);
+
+    background:#272727;
+
+}
+
+.preguntas{
+
+    max-height:0;
+    overflow:hidden;
+    transition:.4s;
+
+}
+
+.categoria.active .preguntas{
+    max-height:1000px;
+}
+
+.respuesta{
+
+    max-height:0;
+    overflow:hidden;
+    transition:.3s;
+
+}
+
+.pregunta.active .respuesta{
+    max-height:500px;
+}
+
+.respuesta p{
+    font-size: 20px;
+    margin:15px 45px;
+    color:white;
+    line-height:1.6;
+
+}
+
+footer{
+    margin-top: 7%;
+    height: fit-content;
+    color:white;
+}
+
+.linea{
+    width:100%;
+    height:3px;
+    background:#ff9800;
+
+    margin-bottom:40px;
+
+}
+
+.pie{
+    padding:0% 3%;
+    font-size: 25px;
+}
+
+.final{
+    align-items: center;
+    display: flex;
+    gap: 150px;
+}
+
+@media(max-width:1100px){
+
+
+#presentacion{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+
+.texto{
+
+width:90%;
+
+}
+
+
+.video{
+
+width:90%;
+
+}
+
+
+.contenedor-cards{
+
+flex-wrap:wrap;
+
+}
+
+
+.card{
+
+flex-basis:45%;
+
+}
+
+
+nav ul{
+
+padding-left:0;
+
+}
+
+
+}
+
+@media (max-width:700px){
+/* =====================
+   GENERAL
+===================== */
+html{
+    scroll-snap-type:none;
+}
+section{
+
+    min-height:auto;
+    height:auto;
+
+    padding:2rem 1rem;
+
+}
+
+/* =====================
+   NAVBAR MÓVIL
+===================== */
+
+#botonVolumen{
         display: flex;
     }
 
@@ -203,13 +548,218 @@ nav a.accent-link{
         padding-left: 1.5em;
     }
 
-    #inicio{
-        width: 100%;
-        min-height: 100dvh;
-        background-image: url("AlegreFit.jpeg");
-        background-size: cover  ;
-        background-position: center center;
-        background-repeat: no-repeat;
-    }
 
+
+/* =====================
+   HERO
+===================== */
+
+
+#inicio{
+    width: 100%;
+    height: 300px;
+    background-position-x:50% ;
+    background-position-y:center ;
+    background-image: url('prueba2.png'); 
+
+    /* EL CAMBIO CLAVE: Ajusta el segundo valor (eje Y) entre 30% y 80% 
+     para mover la imagen verticalmente y centrar la cara del león */
+
+    background-repeat: no-repeat;
+
+}
+
+
+
+/* =====================
+   PRESENTACION
+===================== */
+
+
+#presentacion{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:40px;
+
+}
+
+
+.texto{
+
+    flex:unset;
+
+    width:100%;
+
+}
+
+
+.video{
+
+    flex:unset;
+
+    width:100%;
+
+}
+
+
+.encabezado{
+
+    margin-bottom:20px;
+
+}
+
+
+.encabezado h2{
+
+    font-size:2.5rem;
+
+}
+
+
+.informacion{
+
+    padding-left:0;
+
+    font-size:18px;
+
+    line-height:1.6;
+
+}
+
+
+
+/* =====================
+   TARJETA VIDEO
+===================== */
+
+
+.flip-card{
+
+    width:90%;
+
+    max-width:350px;
+
+}
+
+
+
+/* =====================
+   SERVICIOS
+===================== */
+
+
+.planes{
+
+    overflow:hidden;
+
+}
+
+
+.contenedor-cards{
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+
+.card{
+
+    width:100%;
+
+    height:500px;
+
+}
+
+
+
+.contenido{
+
+    font-size:22px;
+
+    padding:20px;
+
+}
+
+
+.icono{
+
+    font-size:35px;
+
+}
+
+
+
+/* =====================
+   FAQ
+===================== */
+
+
+.categoria-btn,
+.pregunta-btn{
+
+
+    font-size:16px;
+
+    padding:15px;
+
+}
+
+
+.pregunta-btn{
+
+    margin-left:10px;
+
+    width:calc(100% - 10px);
+
+}
+
+
+.respuesta p{
+
+    font-size:16px;
+
+    margin:15px;
+
+}
+
+
+
+/* =====================
+   FOOTER
+===================== */
+
+
+.final{
+
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+
+}
+
+
+.final img{
+
+    width:90px;
+
+    height:90px;
+
+}
+
+
+.pie{
+
+    font-size:16px;
+
+}
 }
