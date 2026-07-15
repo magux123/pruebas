@@ -148,6 +148,7 @@ nav a.accent-link{
     }
 
     section{
+        width: 100%;
         margin-top: 0%;
         scroll-snap-align:start;
         background-color: #111111;;
@@ -202,15 +203,13 @@ nav a.accent-link{
         padding-left: 1.5em;
     }
 
-    #inicio {
-        z-index: 0;
-        background-image: url('AlegreFit.jpeg'); 
-        object-fit: cover;
-        /* EL CAMBIO CLAVE: Ajusta el segundo valor (eje Y) entre 30% y 80% 
-        para mover la imagen verticalmente y centrar la cara del león */
-        max-width: 100dvh;
-        height: 100dvh;
-        aspect-ratio: 16 / 9;
+    #inicio{
+        width: 100%;
+        min-height: 100dvh;
+        background-image: url("AlegreFit.jpeg");
+        background-size: cover  ;
+        background-position: center center;
+        background-repeat: no-repeat;
     }
 
 }
