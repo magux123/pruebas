@@ -52,6 +52,7 @@ main p{
 
 #redes{
     display: flex;
+    gap: 15px;
 }
 
 #botonVolumen{
@@ -333,6 +334,17 @@ h3 span{
     color:white;
     height:100%;
     font-size:clamp(1rem,2vw,2rem);
+    transition: backdrop-filter .4s ease,
+                -webkit-backdrop-filter .4s ease,
+                background .4s ease;
+}
+
+.contenido:hover{
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+
+    background: rgba(15,15,15,.12);
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
 }
 
 #tituloP{
