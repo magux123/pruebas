@@ -338,6 +338,13 @@ h3 span{
                 -webkit-backdrop-filter .4s ease,
                 background .4s ease;
 }
+.contenido:hover{
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    background: rgba(15,15,15,.12);
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+}
 
 .destacado{
     color: #ffcc00;
@@ -345,13 +352,6 @@ h3 span{
     font-size: clamp(1rem,2vw,2rem);
 }
 
-.contenido:hover{
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-
-    background: rgba(15,15,15,.12);
-    box-shadow: 0 15px 35px rgba(0,0,0,.3);
-}
 
 #tituloP{
     margin-top: -50px;
