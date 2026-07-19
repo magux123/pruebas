@@ -514,26 +514,8 @@ section{
    NAVBAR MÓVIL
 ===================== */
 
-#botonVolumen{
-        display: flex;
-    }
-
-    #redes{
-        color: #0071ff;
-        display: flex;
-        flex-direction: row;
-        padding-left: 0.3em;
-        
-    }
-
-    #open-sidebar-button, #close-sidebar-button{
-        display: block;
-    }
-    
-
     nav{
         position: fixed;
-        top: 0;
         right: -100%;
         height: 100vh;
         width: min(20em,100%);
@@ -552,6 +534,7 @@ section{
     }
 
     nav ul{
+        margin-top: -33%;
         align-items: normal;
         padding-left: 0;
         width: 100%;
@@ -561,6 +544,22 @@ section{
     nav a{
         width: 100%;
         padding-left: 1.5em;
+    }
+
+        #botonVolumen{
+        display: flex;
+    }
+
+    #redes{
+        color: #0071ff;
+        display: flex;
+        flex-direction: row;
+        padding-left: 0.3em;
+        
+    }
+
+    #open-sidebar-button, #close-sidebar-button{
+        display: block;
     }
 
 
