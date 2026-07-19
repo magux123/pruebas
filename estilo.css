@@ -339,10 +339,10 @@ h3 span{
                 background .4s ease;
 }
 
-em{
+.destacado{
     color: #ffcc00;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size:clamp(1rem,2vw,2rem);
+    font-size: clamp(1rem,2vw,2rem);
 }
 
 .contenido:hover{
@@ -711,7 +711,7 @@ section{
                 
 }
 
-.contenido em{
+.destacado{
     color: #ffcc00;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size:24px;
