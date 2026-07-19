@@ -339,6 +339,12 @@ h3 span{
                 background .4s ease;
 }
 
+.contenido em{
+    color: #ffcc00;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:clamp(1rem,2vw,2rem);
+}
+
 .contenido:hover{
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
@@ -699,7 +705,24 @@ section{
     font-size:22px;
 
     padding:20px;
+    transition: backdrop-filter .4s ease,
+                -webkit-backdrop-filter .4s ease,
+                background .4s ease;
+                
+}
 
+.contenido em{
+    color: #ffcc00;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:24px;
+}
+
+.contenido:hover{
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    background: rgba(15,15,15,.12);
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
 }
 
 
