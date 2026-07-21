@@ -584,7 +584,7 @@ section{
     height: 300px;
     background-position-x:50% ;
     background-position-y:center ;
-    background-image: url('prueba2.png'); 
+    background-image: url('celu.png'); 
 
     /* EL CAMBIO CLAVE: Ajusta el segundo valor (eje Y) entre 30% y 80% 
      para mover la imagen verticalmente y centrar la cara del león */
