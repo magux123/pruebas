@@ -804,3 +804,304 @@ section{
 
 }
 }
+
+@media (max-width:420px){
+/* =====================
+   GENERAL
+===================== */
+html{
+    scroll-snap-type:none;
+}
+section{
+
+    min-height:auto;
+    height:auto;
+
+    padding:2rem 1rem;
+
+}
+
+/* =====================
+   NAVBAR MÓVIL
+===================== */
+
+    nav{
+        position: fixed;
+        right: -100%;
+        height: 100vh;
+        width: min(20em,100%);
+        z-index: 1000;
+        border-left: 1px solid var(--hover-color);
+        transition: right 300ms ease-in-out;
+        
+    }
+
+    nav.show ~ #overlay {
+        display: block;
+    }
+
+    nav.show{
+        right: 0;
+    }
+
+    nav ul{
+        margin-top: -33%;
+        align-items: normal;
+        padding-left: 0;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    nav a{
+        width: 100%;
+        padding-left: 1.5em;
+    }
+
+        #botonVolumen{
+        display: flex;
+    }
+
+    #redes{
+        color: #0071ff;
+        display: flex;
+        flex-direction: row;
+        padding-left: 0.3em;
+        
+    }
+
+    #open-sidebar-button, #close-sidebar-button{
+        display: block;
+    }
+
+
+
+/* =====================
+   HERO
+===================== */
+
+
+#inicio{
+    width: 100%;
+    height: 300px;
+    background-position-x:50% ;
+    background-position-y:center ;
+    background-image: url('celu.png'); 
+
+    /* EL CAMBIO CLAVE: Ajusta el segundo valor (eje Y) entre 30% y 80% 
+     para mover la imagen verticalmente y centrar la cara del león */
+
+    background-repeat: no-repeat;
+
+}
+
+
+
+/* =====================
+   PRESENTACION
+===================== */
+
+
+#presentacion{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:40px;
+
+}
+
+
+.texto{
+
+    flex:unset;
+
+    width:100%;
+
+}
+
+
+.video{
+
+    flex:unset;
+
+    width:100%;
+
+}
+
+
+.encabezado{
+
+    margin-bottom:20px;
+
+}
+
+
+.encabezado h2{
+
+    font-size:2.5rem;
+
+}
+
+
+.informacion{
+
+    padding-left:0;
+
+    font-size:18px;
+
+    line-height:1.6;
+
+}
+
+
+
+/* =====================
+   TARJETA VIDEO
+===================== */
+
+
+.flip-card{
+
+    width:90%;
+
+    max-width:350px;
+
+}
+
+
+
+/* =====================
+   SERVICIOS
+===================== */
+
+
+.planes{
+
+    overflow:hidden;
+
+}
+
+
+.contenedor-cards{
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+
+.card{
+
+    width:100%;
+
+    height:500px;
+
+}
+
+
+
+.contenido{
+
+    font-size:22px;
+
+    padding:20px;
+    transition: backdrop-filter .4s ease,
+                -webkit-backdrop-filter .4s ease,
+                background .4s ease;
+                
+}
+
+.destacado{
+    color: #ffcc00;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:24px;
+}
+
+.contenido:hover{
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    background: rgba(15,15,15,.12);
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+}
+
+
+.icono{
+
+    font-size:35px;
+
+}
+
+
+
+/* =====================
+   FAQ
+===================== */
+
+
+.categoria-btn,
+.pregunta-btn{
+
+
+    font-size:16px;
+
+    padding:15px;
+
+}
+
+
+.pregunta-btn{
+
+    margin-left:10px;
+
+    width:calc(100% - 10px);
+
+}
+
+
+.respuesta p{
+
+    font-size:16px;
+
+    margin:15px;
+
+}
+
+
+
+/* =====================
+   FOOTER
+===================== */
+
+
+.final{
+
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+
+}
+
+
+.final img{
+
+    width:90px;
+
+    height:90px;
+
+}
+
+
+.pie{
+
+    font-size:16px;
+
+}
+}
