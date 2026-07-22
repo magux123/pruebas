@@ -882,11 +882,9 @@ section{
 
 #inicio{
     width: 100%;
-    height: 300px;
-    background-position-x:50% ;
-    background-position-y:center ;
-    background-image: url('celu.png'); 
-
+    height: 100dvh;
+    background-image: url('miniCelu.png'); 
+    background-position: center 90%; 
     /* EL CAMBIO CLAVE: Ajusta el segundo valor (eje Y) entre 30% y 80% 
      para mover la imagen verticalmente y centrar la cara del león */
 
