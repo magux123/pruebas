@@ -34,7 +34,7 @@ section{
 }
 
 #inicio {
-  background-image: url('image\ copy.png'); 
+  background-image: url('inicio.png'); 
   /* EL CAMBIO CLAVE: Ajusta el segundo valor (eje Y) entre 30% y 80% 
      para mover la imagen verticalmente y centrar la cara del león */
   background-position: center 20%; 
