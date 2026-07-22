@@ -34,11 +34,10 @@ section{
 }
 
 #inicio {
-  background-image: url('AlegreFit.jpeg'); 
-  background-size: cover; 
+  background-image: url('image\ copy.png'); 
   /* EL CAMBIO CLAVE: Ajusta el segundo valor (eje Y) entre 30% y 80% 
      para mover la imagen verticalmente y centrar la cara del león */
-  background-position: center 90%; 
+  background-position: center 20%; 
   background-repeat: no-repeat;
 }
 
